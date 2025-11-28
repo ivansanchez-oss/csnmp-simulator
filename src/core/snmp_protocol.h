@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include <stdint.h>
 
 typedef enum {
     CLASS_UNIVERSAL = 0x00,         // 0b00000000
@@ -20,4 +21,6 @@ typedef enum {
     TAG_SEQUENCE = 0x10,  
 } BER_Tag;
 
-void encoding_boolean_ber(bool value, char* buf);
+uint8_t needed_bytes(int32_t value);
+void encoding_integer_ber(int32_t value, unsigned char* buf, size_t* pos);
+void encoding_boolean_ber(bool value, unsigned char* buf, size_t* pos);
